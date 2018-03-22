@@ -9,6 +9,11 @@ const parametros = {
     finish: '2017-03-02'
 };
 
+const parametros2 = {
+    id: '4e25ce61-e6e2-457a-89f7-116404990967',
+    start: '2017-02-02',
+    finish: '2017-04-02'
+};
 
 describe('módulo contadorFacturas', () => {
   describe('calcularNumeroFacturas', () => {
@@ -36,11 +41,22 @@ describe('módulo contadorFacturas', () => {
         assert.equal(numFacturas, "Fecha inicio es posterior a fecha final");
     });
 
-    it('retorna número con parametros', () => {
-        let numFacturas = contadorFacturas.
-        calcularNumeroFacturas(parametros.id, parametros.start, parametros.finish);
-        assert.exists(numFacturas);
-        assert.isNumber(numFacturas);
+    it('retorna totales con parametros', () => {
+        contadorFacturas.calcularNumeroFacturas(parametros.id, parametros.start, parametros.finish)
+        .then((totales) => {
+            assert.exists(totales);
+            assert.isObject(totales);
+            console.log(totales);
+        });
+    });
+
+    it('retorna totales con parametros, encadenado', () => {
+        contadorFacturas.calcularNumeroFacturas(parametros2.id, parametros2.start, parametros2.finish)
+        .then((totales) => {
+            assert.exists(totales);
+            assert.isObject(totales);
+            console.log(totales);
+        });        
     });
   });
 });
@@ -49,21 +65,6 @@ describe('módulo contadorFacturas', () => {
     describe('obtenerNumeroFacturas', () => {
       it('debe ser una función', () => {
           expect(contadorFacturas.obtenerNumeroFacturas).to.be.a('function');
-    });
-
-    it('retorna error con final después de inicio', () => {
-        let numFacturas = contadorFacturas.
-        obtenerNumeroFacturas(parametros.id, parametros.finish, parametros.start);
-        assert.exists(numFacturas);
-        assert.isString(numFacturas);
-        //assert.equal(numFacturas, "Fecha inicio es posterior a fecha final");
-    });
-
-    it('retorna número con parametros', () => {
-        let numFacturas = contadorFacturas.
-        obtenerNumeroFacturas(parametros.id, parametros.start, parametros.finish);
-        assert.exists(numFacturas);
-        assert.isNumber(numFacturas);
     });
     });
   });
