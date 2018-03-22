@@ -1,6 +1,10 @@
 # ContandoEnconta
 Aplicación en node js para consolidar conteo de factura usando un API de terceros
 
+## Prerrequisitos
+
+Es necesario tener instalado npm y git. Las instrucciones se dan para el uso de línea de comandos.
+
 ## Como correr
 
 ```bash
