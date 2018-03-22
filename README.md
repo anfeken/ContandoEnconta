@@ -22,9 +22,9 @@ Las pruebas se corren con
 
 Se ofrece un end point para un API REST, /contadorFacturas. El uso es similar al del API descrita en el ejercicio, recibe tres parámetros por URL:
 
-### id
-### start
-### finish
+### id id de usuario
+### start fecha de inicio, en formato YYYY-MM-DD
+### finish fecha de terminación, en formato YYYY-MM-DD
 
 Un  par de ejemplos de URLs válidas
 ```url
