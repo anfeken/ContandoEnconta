@@ -83,8 +83,8 @@ function decidirNumeroFacturas(numFacturas, idUsuario, fechaInicio, fechaFinal, 
         let fechaMediaSiguiente = new Date(fechaMedia);
         fechaMediaSiguiente.setTime(fechaMediaSiguiente.getTime()+DIA_MILISEGUNDOS);
         //Se necesita el día después para no contar dos veces el mismo día
-        return obtenerNumeroFacturas(idUsuario, fechaInicio, parteDiaISOString(fechaMedia.toISOString()), totales)
-            .then(obtenerNumeroFacturas(idUsuario, parteDiaISOString(fechaMediaSiguiente.toISOString()), fechaFinal, totales));
+        return Promise.all([obtenerNumeroFacturas(idUsuario, fechaInicio, parteDiaISOString(fechaMedia.toISOString()), totales),
+            obtenerNumeroFacturas(idUsuario, parteDiaISOString(fechaMediaSiguiente.toISOString()), fechaFinal, totales)]);
     }
     return;
 }
